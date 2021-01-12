@@ -62,6 +62,7 @@ services:
 
   kafdrop:
     image: obsidiandynamics/kafdrop
+    container_name: kafdrop
     restart: always
     depends_on:
       - kafka1
@@ -112,7 +113,7 @@ services:
       - "8081:8081"
     environment:
       SCHEMA_REGISTRY_HOST_NAME: schema-registry
-      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'broker:29092'
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'kafka1:29092'
       SCHEMA_REGISTRY_LISTENERS: http://0.0.0.0:8081
   schemaregistry-ui:
     image: 'landoop/schema-registry-ui'
